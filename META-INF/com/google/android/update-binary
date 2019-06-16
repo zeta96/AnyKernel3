@@ -191,8 +191,10 @@ if [ $? != 0 -o -z "$(ls bin)" ]; then
   abort "Busybox setup failed. Aborting...";
 fi;
 
-if [ -f $home/banner ]; then
-  ui_printfile banner;
+if [ -f banner ]; then
+  while IFS='' read -r line || $bb [[ -n "$line" ]]; do
+    ui_print "$line";
+  done < banner;
   ui_print " " " ";
 fi;
 
@@ -274,14 +276,6 @@ if [ "$(file_getprop anykernel.sh do.devicecheck)" == 1 ]; then
   if [ ! "$match" ]; then
     abort " " "Unsupported device. Aborting...";
   fi;
-  ui_print "Checking for Project Treble...";
-  if [ "$(file_getprop /system/build.prop ro.treble.enabled)" == "true" ]; then
-    ui_print "Treble Status: Supported";
-    #dtb=/tmp/anykernel/dtb-treble;
-  else
-    ui_print "Treble Status: Not supported";
-    #dtb=/tmp/anykernel/dtb-nontreble;
-  fi;
 fi;
 
 supported_ver=$(file_getprop anykernel.sh supported.versions | $bb tr -d '[:space:]');
@@ -330,35 +324,7 @@ if [ "$supported_lvl" ]; then
   else
     abort " " "Unsupported Android security patch level. Aborting...";
   fi;
-    is_miui="$(file_getprop /system/build.prop 'ro.miui.ui.version.code')"
-  if [[ -z $is_miui ]]; then
-    ui_print "You are running a custom ROM!"
-  else
-    abort "You are running Miui... Aborting...";
-  fi;
 fi;
-
-if [ "$(cat /dev/block/bootdevice/by-name/boot | grep -m 1 androidboot | grep permissive | wc -l)" -gt "0" ]; then
-  ui_print "Permissive Selinux detected";
-  ui_print " ";
-else
-  ui_print "Enforcing Selinux detected";
-  ui_print " ";
-fi;
-
-ui_print "Rom info";
-username="$(file_getprop /system/build.prop "ro.build.user")";
-ui_print "- User: $username";
-
-hostname="$(file_getprop /system/build.prop "ro.build.host")";
-ui_print "- Host: $hostname";
-
-productname="$(file_getprop /system/build.prop "ro.product.name")";
-ui_print "- Product name: $productname";
-
-date_flag="$(date +%Y-%m-%d)";
-ui_print "- Current system date: $date_flag";
-ui_print " ";
 
 ui_print "Installing...";
 core=$($bb grep -oE 'ak.*core.sh' anykernel.sh);
