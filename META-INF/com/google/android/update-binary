@@ -94,7 +94,7 @@ if [ -f version ]; then
   done < version;
   ui_print " ";
 fi;
-ui_print " " "AnyKernel3 by osm0sis @ xda-developers" " " " ";
+#ui_print " " "AnyKernel3 by osm0sis @ xda-developers" " " " ";
 
 unmount_all;
 if [ ! "$(is_mounted /system)" ]; then
@@ -147,7 +147,7 @@ if [ "$(file_getprop anykernel.sh do.devicecheck)" == 1 ]; then
     #dtb=/tmp/anykernel/dtb-treble;
   else
     ui_print "Treble Status: Not supported";
-   # dtb=/tmp/anykernel/dtb-nontreble;
+    #dtb=/tmp/anykernel/dtb-nontreble;
   fi;
 fi;
 
