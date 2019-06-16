@@ -189,7 +189,6 @@ $home/tools/magiskpolicy --load sepolicy --save $home/ramdisk/sepolicy \
 "allow toolbox init unix_stream_socket connectto" \
 "allow toolbox init fifo_file { getattr write }"
 # end ramdisk changes
-;
 
 write_boot;
 ## end install
