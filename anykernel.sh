@@ -184,8 +184,9 @@ $home/tools/magiskpolicy --load sepolicy --save $home/ramdisk/sepolicy \
 "allow init sysfs file" \
 "allow init sysfs_graphics file { open write }" \
 "allow thermal-engine shell_exec file { execute }" \
-"allow vendor_init proc_dirty_ratio file { write }"\
-"allow vendor_init proc_dirty file { write }" \
+allow thermal-engine shell_exec file { read open }"\
+"allow vendor_init proc_dirty_ratio file write"\
+"allow vendor_init proc_dirty file write" \
 "allow toolbox toolbox capability sys_admin" \
 "allow toolbox property_socket sock_file write" \
 "allow toolbox default_prop property_service set" \
