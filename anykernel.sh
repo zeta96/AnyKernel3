@@ -135,9 +135,9 @@ rm -rf /storage/emulated/0/Spectrum/profiles/performance.profile
 
 #Spectrum========================================
 cp -rpf $home/ramdisk/init.spectrum.rc /system/vendor/etc/init/init.spectrum.rc
-chmod 644 /system/vendor/etc/init/init.spectrum.rc
+chmod 755 /system/vendor/etc/init/init.spectrum.rc
 cp -rpf $home/ramdisk/init.spectrum.sh /system/vendor/etc/init/init.spectrum.sh
-chmod 644 /system/vendor/etc/init/init.spectrum.sh
+chmod 755 /system/vendor/etc/init/init.spectrum.sh
 #spectrum write init.rc only##############################
 if [ -e init.rc ]; then
 	cp -rpf init.rc~ init.rc
