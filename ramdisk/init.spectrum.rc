@@ -596,8 +596,8 @@ on property:persist.spectrum.profile=2
 		write /proc/sys/vm/min_free_kbytes 6764
 		write /proc/sys/vm/dirty_ratio 90
 		write /proc/sys/vm/dirty_background_ratio 70
-		write /proc/sys/vm/dirty_expire_centisecs 250
-		write /proc/sys/vm/dirty_writeback_centisecs 500
+		write /proc/sys/vm/dirty_expire_centisecs 300
+		write /proc/sys/vm/dirty_writeback_centisecs 1000
 		write /proc/sys/vm/oom_kill_allocating_task 0
 		write /proc/sys/vm/laptop_mode 0
 
@@ -767,7 +767,7 @@ on property:persist.spectrum.profile=3
 
 	# VM
 		write /proc/sys/vm/swappiness 100
-		write /proc/sys/vm/vfs_cache_pressure 500
+		write /proc/sys/vm/vfs_cache_pressure 300
 		write /proc/sys/vm/min_free_kbytes 8192
 		write /proc/sys/vm/dirty_ratio 10
 		write /proc/sys/vm/dirty_background_ratio 10
