@@ -145,10 +145,10 @@ if [ "$(file_getprop anykernel.sh do.devicecheck)" == 1 ]; then
   ui_print "Checking for Project Treble...";
   if [ "$(file_getprop /system/build.prop ro.treble.enabled)" == "true" ]; then
     ui_print "Treble Status: Supported";
-    dtb=$home/treble;
+    #dtb=/tmp/anykernel/dtb-treble;
   else
     ui_print "Treble Status: Not supported";
-    dtb=$home/nontreble;
+    #dtb=/tmp/anykernel/dtb-nontreble;
   fi;
 fi;
 
@@ -210,10 +210,6 @@ ui_print " ";
 ui_print "Installing...";
 core=$($bb grep -oE 'ak.*core.sh' anykernel.sh);
 test -f tools/$core || $bb ln -s $home/tools/ak*-core.sh $home/tools/$core;
-cat $home/kernel/Image.gz $dtb/*.dtb > $home/Image.gz-dtb;
-if [ $? != "0" ]; then
-  abort "DTB append failed. Aborting...";
-fi;
 PATH="$home/bin:$PATH" home=$home $bb ash anykernel.sh $2;
 if [ $? != 0 ]; then
   abort;
