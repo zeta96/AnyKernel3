@@ -16,6 +16,7 @@ do.force_encryption=0
 device.name1=santoni
 device.name2=Redmi 4x
 supported.versions=9, 9.0, 8.1, 8
+supported.patchlevels=
 '; } # end properties
 
 # shell variables
