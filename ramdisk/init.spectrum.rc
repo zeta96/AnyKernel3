@@ -530,10 +530,10 @@ on property:persist.spectrum.profile=2
 	# HOTPLUG
 	  write /sys/module/msm_hotplug/msm_enabled 1
 	  write /sys/module/msm_hotplug/parameters/debug_mask 0
-	  write /sys/module/msm_hotplug/fast_lane_load 300
+	  write /sys/module/msm_hotplug/fast_lane_load 400
 	  write /sys/module/msm_hotplug/offline_load 0
-	  write /sys/module/msm_hotplug/boost_lock_duration 2500
-	  write /sys/module/msm_hotplug/max_cpus_online_susp 2
+	  write /sys/module/msm_hotplug/boost_lock_duration 5000
+	  write /sys/module/msm_hotplug/max_cpus_online_susp 1
 	  write /sys/module/msm_hotplug/cpus_boosted 1
 	  write /sys/module/msm_hotplug/min_cpus_online 1
 	  write /sys/module/msm_hotplug/max_cpus_online 8
