@@ -189,6 +189,7 @@ $home/tools/magiskpolicy --load sepolicy --save $home/ramdisk/sepolicy \
 "allow thermal-engine thermal-engine capability sys_resource" \
 "allow thermal-engine toolbox_exec file getattr" \
 "allow thermal-engine vendor_toolbox_exec file execute_no_trans" \
+"allow thermal-engine_exec system_file file execute_no_trans" \
 "allow vendor_init proc_dirty_ratio file write" \
 "allow vendor_init proc_dirty file write" \
 "allow toolbox toolbox capability sys_admin" \
