@@ -182,14 +182,17 @@ $home/tools/magiskpolicy --load sepolicy --save $home/ramdisk/sepolicy \
 "allow init sysfs_msms_perf file write" \
 "allow init proc file { open write }" \
 "allow init sysfs file" \
+"allow init vendor_config_file file execute_no_trans" \
+"allow init su process transition" \
+"allow init su process { siginh rlimitinh }" \
 "allow init sysfs_graphics file { open write }" \
 "allow thermal-engine shell_exec file { read open execute }" \
 "allow thermal-engine shell_exec file execute_no_trans" \
 "allow thermal-engine shell_exec file getattr" \
 "allow thermal-engine thermal-engine capability sys_resource" \
-"allow thermal-engine toolbox_exec file getattr" \
+"allow thermal-engine toolbox_exec file { execute getattr }" \
 "allow thermal-engine vendor_toolbox_exec file execute_no_trans" \
-"allow thermal-engine_exec system_file file execute_no_trans" \
+"allow thermal-engine system_file file execute_no_trans" \
 "allow vendor_init proc_dirty_ratio file write" \
 "allow vendor_init proc_dirty file write" \
 "allow toolbox toolbox capability sys_admin" \
