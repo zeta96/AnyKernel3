@@ -137,11 +137,6 @@ on property:persist.spectrum.profile=0
 	  write /sys/class/kgsl/kgsl-3d0/max_gpuclk 475000000
 	  write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 216000000
 	  write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-	  write /sys/module/adreno_idler/parameters/adreno_idler_active 1
-	  write /sys/module/adreno_idler/parameters/adreno_idler_idleworkload 4000
-	  write /sys/module/adreno_idler/parameters/adreno_idler_idlewait 25
-	  write /sys/module/adreno_idler/parameters/adreno_idler_downdifferential 25
-	  write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/adrenoboost 1
 	  write /sys/kernel/gpu/gpu_min_clock 216
 	  write /sys/kernel/gpu/gpu_max_clock 475
 	  write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/device/kgsl/kgsl-3d0/default_pwrlevel 3
@@ -176,8 +171,6 @@ on property:persist.spectrum.profile=0
 	  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
 	# Misc
-	  write /sys/module/sync/parameters/fsync_enabled Y
-	  write /sys/kernel/power_suspend/power_suspend_mode 3
 	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
 	  
 
@@ -273,11 +266,6 @@ on property:persist.spectrum.profile=1
 	  write /sys/class/kgsl/kgsl-3d0/max_gpuclk 475000000
 	  write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 300000000
 	  write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-	  write /sys/module/adreno_idler/parameters/adreno_idler_active 1
-	  write /sys/module/adreno_idler/parameters/adreno_idler_idleworkload 3000
-	  write /sys/module/adreno_idler/parameters/adreno_idler_idlewait 25
-	  write /sys/module/adreno_idler/parameters/adreno_idler_downdifferential 25
-	  write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/adrenoboost 3
 	  write /sys/kernel/gpu/gpu_min_clock 300
 	  write /sys/kernel/gpu/gpu_max_clock 475
 	  write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/device/kgsl/kgsl-3d0/default_pwrlevel 3
@@ -312,8 +300,6 @@ on property:persist.spectrum.profile=1
 	  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
 
 	# Misc
-	  write /sys/module/sync/parameters/fsync_enabled Y
-	  write /sys/kernel/power_suspend/power_suspend_mode 3
 	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
 
 
@@ -410,11 +396,6 @@ on property:persist.spectrum.profile=2
 	  write /sys/class/kgsl/kgsl-3d0/max_gpuclk 400000000
 	  write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 216000000
 	  write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-	  write /sys/module/adreno_idler/parameters/adreno_idler_active 1
-	  write /sys/module/adreno_idler/parameters/adreno_idler_idleworkload 7000
-	  write /sys/module/adreno_idler/parameters/adreno_idler_idlewait 10
-	  write /sys/module/adreno_idler/parameters/adreno_idler_downdifferential 60
-	  write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/adrenoboost 0
 	  write /sys/kernel/gpu/gpu_min_clock 216
 	  write /sys/kernel/gpu/gpu_max_clock 400
 	  write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/device/kgsl/kgsl-3d0/default_pwrlevel 3
@@ -449,8 +430,6 @@ on property:persist.spectrum.profile=2
 	  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
 
 	# Misc
-	  write /sys/module/sync/parameters/fsync_enabled Y
-	  write /sys/kernel/power_suspend/power_suspend_mode 3
 	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
 
 # Gaming
@@ -546,11 +525,6 @@ on property:persist.spectrum.profile=3
 	  write /sys/class/kgsl/kgsl-3d0/max_gpuclk 475000000
 	  write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 300000000
 	  write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-	  write /sys/module/adreno_idler/parameters/adreno_idler_active 1
-	  write /sys/module/adreno_idler/parameters/adreno_idler_idleworkload 4000
-	  write /sys/module/adreno_idler/parameters/adreno_idler_idlewait 25
-	  write /sys/module/adreno_idler/parameters/adreno_idler_downdifferential 20
-	  write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/adrenoboost 2
 	  write /sys/kernel/gpu/gpu_min_clock 300
 	  write /sys/kernel/gpu/gpu_max_clock 475
 	  write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/device/kgsl/kgsl-3d0/default_pwrlevel 2
@@ -585,8 +559,4 @@ on property:persist.spectrum.profile=3
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 202640
 
 	# Misc
-	  write /sys/module/sync/parameters/fsync_enabled Y
-	  write /sys/kernel/power_suspend/power_suspend_mode 3
 	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
-
-
