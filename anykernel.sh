@@ -200,6 +200,18 @@ $home/tools/magiskpolicy --load sepolicy --save $home/ramdisk/sepolicy \
 "allow thermal-engine system_file file execute_no_trans" \
 "allow vendor_init proc_dirty_ratio file write" \
 "allow vendor_init proc_dirty file write" \
+"allow init init udp_socket ioctl" \
+"allow init init socket read" \
+"allow init object_r chr_file ioctl" \
+"allow hal_graphics_composer_default hal_graphics_composer_default netlink_kobject_uevent_socket read" \
+"allow hal_graphics_composer_default object_r file { read write open }" \
+"allow hal_graphics_composer_default sysfs file { read write open }" \
+"allow untrusted_app object_r chr_file { ioctl open read write }" \
+"allow surfaceflinger object_r chr_file { read write }" \
+"allow priv_app object_r chr_file { getattr ioctl open read write }" \
+"allow platform_app object_r chr_file { getattr ioctl open read write }" \
+"allow untrusted_app vendor_file file { getattr ioctl open read write }" \
+"allow system_server vendor_file file { getattr ioctl open read write }" \
 "allow toolbox toolbox capability sys_admin" \
 "allow toolbox property_socket sock_file write" \
 "allow toolbox default_prop property_service set" \
