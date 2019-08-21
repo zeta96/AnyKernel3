@@ -123,10 +123,18 @@ on property:persist.spectrum.profile=0
 
 	# HOTPLUG
 	  write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 2
+	  write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
 	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 40
 	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 60
 	  write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
 	  write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 0
+	  
+	  write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
+	  write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
+	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 40
+	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 60
+	  write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
+	  write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 0
 	  
 	# THERMAL
 	  write /sys/module/msm_thermal/parameters/enabled N
@@ -252,10 +260,18 @@ on property:persist.spectrum.profile=1
 
 	# HOTPLUG
 	  write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
+	  write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
 	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 20
 	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 40
 	  write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
 	  write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 0
+	  
+	  write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
+	  write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
+	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 20
+	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 40
+	  write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
+	  write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 0
 	  
 	# THERMAL
 	  write /sys/module/msm_thermal/parameters/enabled N
@@ -382,10 +398,18 @@ on property:persist.spectrum.profile=2
 
 	# HOTPLUG
 	  write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
+  	  write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
 	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 90
 	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 96
 	  write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
 	  write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 0
+	  
+	  write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
+	  write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
+	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 90
+	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 96
+	  write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
+	  write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 0
 	  
 	# THERMAL
 	  write /sys/module/msm_thermal/parameters/enabled N
@@ -511,10 +535,18 @@ on property:persist.spectrum.profile=3
 
 	# HOTPLUG
 	  write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
+  	  write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
 	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 30
 	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 50
 	  write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
 	  write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 0
+	  
+	  write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
+	  write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
+	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 30
+	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 50
+	  write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
+	  write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 0
  
 	# THERMAL
 	  write /sys/module/msm_thermal/parameters/enabled N
@@ -556,7 +588,7 @@ on property:persist.spectrum.profile=3
 	  chown root /sys/module/lowmemorykiller/parameters/minfree
 	  write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,51256,150296,200640
 	  write /sys/module/lowmemorykiller/parameters/cost 16
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 202640
+    	  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 202640
 
 	# Misc
 	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
