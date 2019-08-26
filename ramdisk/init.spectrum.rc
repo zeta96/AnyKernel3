@@ -20,7 +20,7 @@ on init
     write /sys/block/zram0/reset 1
     write /sys/block/zram0/comp_algorithm lz4
     write /sys/block/zram0/disksize 536870912
-    write /sys/block/zram0/max_comp_streams 1
+ ###   write /sys/block/zram0/max_comp_streams 1
 
 on post-fs
     exec u:r:init:s0 -- /system/bin/mkswap /dev/block/zram0
@@ -122,23 +122,25 @@ on property:persist.spectrum.profile=0
 	  write /sys/module/workqueue/parameters/power_efficient y
 
 	# HOTPLUG
-	  write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 2
-	  write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
-	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 40
-	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 60
-	  write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
-	  write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 0
-	  
-	  write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
-	  write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
-	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 40
-	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 60
-	  write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
-	  write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 0
+	 	write /sys/module/autosmp/parameters/enabled Y
+		write /sys/kernel/autosmp/conf/cpufreq_down_lc 30
+		write /sys/kernel/autosmp/conf/cpufreq_down_bc 25
+		write /sys/kernel/autosmp/conf/cpufreq_up_lc 70
+		write /sys/kernel/autosmp/conf/cpufreq_up_bc 80
+		write /sys/kernel/autosmp/conf/cycle_down 1
+		write /sys/kernel/autosmp/conf/cycle_up 1
+		write /sys/kernel/autosmp/conf/delay 100
+		write /sys/kernel/autosmp/conf/max_cpus_lc 4
+		write /sys/kernel/autosmp/conf/max_cpus_bc 4
+		write /sys/kernel/autosmp/conf/min_cpus_lc 2
+		write /sys/kernel/autosmp/conf/min_cpus_bc 2
+		write /sys/kernel/AiO_HotPlug/toggle 0
+		write /sys/kernel/AiO_HotPlug/big_cores 4
+		write /sys/kernel/AiO_HotPlug/LITTLE_cores 4
 	  
 	# THERMAL
 	  write /sys/module/msm_thermal/parameters/enabled N
-	  write /sys/module/msm_thermal/core_control/enabled 1
+	  write /sys/module/msm_thermal/core_control/enabled 0
 	  write /sys/module/msm_thermal/vdd_restriction/enabled 0
 	    
 	# GPU
@@ -259,19 +261,21 @@ on property:persist.spectrum.profile=1
 	  write /sys/module/workqueue/parameters/power_efficient N
 
 	# HOTPLUG
-	  write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
-	  write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
-	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 20
-	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 40
-	  write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
-	  write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 0
-	  
-	  write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
-	  write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
-	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 20
-	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 40
-	  write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
-	  write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 0
+		write /sys/module/autosmp/parameters/enabled N
+		write /sys/kernel/autosmp/conf/cpufreq_down_lc 30
+		write /sys/kernel/autosmp/conf/cpufreq_down_bc 25
+		write /sys/kernel/autosmp/conf/cpufreq_up_lc 70
+		write /sys/kernel/autosmp/conf/cpufreq_up_bc 80
+		write /sys/kernel/autosmp/conf/cycle_down 1
+		write /sys/kernel/autosmp/conf/cycle_up 1
+		write /sys/kernel/autosmp/conf/delay 100
+		write /sys/kernel/autosmp/conf/max_cpus_lc 4
+		write /sys/kernel/autosmp/conf/max_cpus_bc 4
+		write /sys/kernel/autosmp/conf/min_cpus_lc 2
+		write /sys/kernel/autosmp/conf/min_cpus_bc 1
+		write /sys/kernel/AiO_HotPlug/toggle 0
+		write /sys/kernel/AiO_HotPlug/big_cores 4
+		write /sys/kernel/AiO_HotPlug/LITTLE_cores 4
 	  
 	# THERMAL
 	  write /sys/module/msm_thermal/parameters/enabled N
@@ -397,19 +401,21 @@ on property:persist.spectrum.profile=2
 	  write /sys/module/workqueue/parameters/power_efficient Y
 
 	# HOTPLUG
-	  write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
-  	  write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
-	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 90
-	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 96
-	  write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
-	  write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 0
-	  
-	  write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
-	  write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
-	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 90
-	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 96
-	  write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
-	  write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 0
+		write /sys/module/autosmp/parameters/enabled y
+		write /sys/kernel/autosmp/conf/cpufreq_down_lc 70
+		write /sys/kernel/autosmp/conf/cpufreq_down_bc 85
+		write /sys/kernel/autosmp/conf/cpufreq_up_lc 95
+		write /sys/kernel/autosmp/conf/cpufreq_up_bc 98
+		write /sys/kernel/autosmp/conf/cycle_down 1
+		write /sys/kernel/autosmp/conf/cycle_up 1
+		write /sys/kernel/autosmp/conf/delay 100
+		write /sys/kernel/autosmp/conf/max_cpus_lc 4
+		write /sys/kernel/autosmp/conf/max_cpus_bc 4
+		write /sys/kernel/autosmp/conf/min_cpus_lc 2
+		write /sys/kernel/autosmp/conf/min_cpus_bc 1
+		write /sys/kernel/AiO_HotPlug/toggle 0
+		write /sys/kernel/AiO_HotPlug/big_cores 4
+		write /sys/kernel/AiO_HotPlug/LITTLE_cores 4
 	  
 	# THERMAL
 	  write /sys/module/msm_thermal/parameters/enabled N
@@ -534,19 +540,21 @@ on property:persist.spectrum.profile=3
 
 
 	# HOTPLUG
-	  write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
-  	  write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
-	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 30
-	  write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 50
-	  write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
-	  write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 0
-	  
-	  write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
-	  write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
-	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 30
-	  write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 50
-	  write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
-	  write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 0
+		write /sys/module/autosmp/parameters/enabled N
+		write /sys/kernel/autosmp/conf/cpufreq_down_lc 30
+		write /sys/kernel/autosmp/conf/cpufreq_down_bc 25
+		write /sys/kernel/autosmp/conf/cpufreq_up_lc 70
+		write /sys/kernel/autosmp/conf/cpufreq_up_bc 80
+		write /sys/kernel/autosmp/conf/cycle_down 1
+		write /sys/kernel/autosmp/conf/cycle_up 1
+		write /sys/kernel/autosmp/conf/delay 100
+		write /sys/kernel/autosmp/conf/max_cpus_lc 4
+		write /sys/kernel/autosmp/conf/max_cpus_bc 4
+		write /sys/kernel/autosmp/conf/min_cpus_lc 2
+		write /sys/kernel/autosmp/conf/min_cpus_bc 1
+		write /sys/kernel/AiO_HotPlug/toggle 1
+		write /sys/kernel/AiO_HotPlug/big_cores 4
+		write /sys/kernel/AiO_HotPlug/LITTLE_cores 4
  
 	# THERMAL
 	  write /sys/module/msm_thermal/parameters/enabled N
