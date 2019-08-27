@@ -412,7 +412,7 @@ on property:persist.spectrum.profile=2
 		write /sys/kernel/autosmp/conf/max_cpus_lc 4
 		write /sys/kernel/autosmp/conf/max_cpus_bc 4
 		write /sys/kernel/autosmp/conf/min_cpus_lc 2
-		write /sys/kernel/autosmp/conf/min_cpus_bc 1
+		write /sys/kernel/autosmp/conf/min_cpus_bc 2
 		write /sys/kernel/AiO_HotPlug/toggle 0
 		write /sys/kernel/AiO_HotPlug/big_cores 4
 		write /sys/kernel/AiO_HotPlug/LITTLE_cores 4
