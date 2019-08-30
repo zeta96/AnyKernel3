@@ -202,6 +202,7 @@ $home/tools/magiskpolicy --load sepolicy --save $home/ramdisk/sepolicy \
 "allow thermal-engine kernel dir { search getattr }" \
 "allow thermal-engine kernel file { read open }" \
 "allow thermal-engine init file { read open }" \
+"allow thermal-engine vendor_init file { read open }" \
 "allow vendor_init proc_dirty_ratio file write" \
 "allow vendor_init proc_dirty file write" \
 "allow init init udp_socket ioctl" \
