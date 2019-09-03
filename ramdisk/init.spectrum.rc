@@ -173,11 +173,11 @@ on property:persist.spectrum.profile=0
 		write /proc/sys/vm/laptop_mode 0
 
 	# LKM
-	  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
-	  chown root /sys/module/lowmemorykiller/parameters/minfree
-	  write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,32256,55296,80640
-	  write /sys/module/lowmemorykiller/parameters/cost 32
-	  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
+	 # chmod 666 /sys/module/lowmemorykiller/parameters/minfree
+	 # chown root /sys/module/lowmemorykiller/parameters/minfree
+	 # write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,32256,55296,80640
+	 # write /sys/module/lowmemorykiller/parameters/cost 32
+	 # write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
 	# Misc
 	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
@@ -311,11 +311,11 @@ on property:persist.spectrum.profile=1
 		write /proc/sys/vm/laptop_mode 0
 
 	# LKM
-	  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
-	  chown root /sys/module/lowmemorykiller/parameters/minfree
-	  write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,51256,89600,115200
-	  write /sys/module/lowmemorykiller/parameters/cost 32
-	  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
+	#  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
+	#  chown root /sys/module/lowmemorykiller/parameters/minfree
+	#  write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,51256,89600,115200
+	#  write /sys/module/lowmemorykiller/parameters/cost 32
+	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
 
 	# Misc
 	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
@@ -450,11 +450,11 @@ on property:persist.spectrum.profile=2
 		write /proc/sys/vm/laptop_mode 0
 
 	# LKM
-	  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
-	  chown root /sys/module/lowmemorykiller/parameters/minfree
-	  write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,32256,55296,80640
-	  write /sys/module/lowmemorykiller/parameters/cost 32
-	  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
+	# chmod 666 /sys/module/lowmemorykiller/parameters/minfree
+	#  chown root /sys/module/lowmemorykiller/parameters/minfree
+	#  write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,32256,55296,80640
+	#  write /sys/module/lowmemorykiller/parameters/cost 32
+	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
 
 	# Misc
 	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
@@ -588,11 +588,11 @@ on property:persist.spectrum.profile=3
 		write /proc/sys/vm/laptop_mode 0
 
 	# LKM
-	  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
-	  chown root /sys/module/lowmemorykiller/parameters/minfree
-	  write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,51256,150296,200640
-	  write /sys/module/lowmemorykiller/parameters/cost 16
-    	  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 202640
+	#  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
+	 # chown root /sys/module/lowmemorykiller/parameters/minfree
+	#  write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,51256,150296,200640
+	#  write /sys/module/lowmemorykiller/parameters/cost 16
+    	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 202640
 
 	# Misc
 	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
