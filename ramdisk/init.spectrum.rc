@@ -166,11 +166,11 @@ on property:persist.spectrum.profile=0
 	    
 	# VM
 		write /proc/sys/vm/swappiness 60
-		write /proc/sys/vm/min_free_kbytes 6764
-		write /proc/sys/vm/dirty_ratio 20
-		write /proc/sys/vm/dirty_background_ratio 5
-		write /proc/sys/vm/oom_kill_allocating_task 0
-		write /proc/sys/vm/laptop_mode 0
+		#write /proc/sys/vm/min_free_kbytes 6764
+		#write /proc/sys/vm/dirty_ratio 20
+		#write /proc/sys/vm/dirty_background_ratio 5
+		#write /proc/sys/vm/oom_kill_allocating_task 0
+		#write /proc/sys/vm/laptop_mode 0
 
 	# LKM
 	 # chmod 666 /sys/module/lowmemorykiller/parameters/minfree
@@ -304,11 +304,11 @@ on property:persist.spectrum.profile=1
 
 	# VM
 		write /proc/sys/vm/swappiness 0
-		write /proc/sys/vm/min_free_kbytes 12288
-		write /proc/sys/vm/dirty_ratio 20
-		write /proc/sys/vm/dirty_background_ratio 5
-		write /proc/sys/vm/oom_kill_allocating_task 0
-		write /proc/sys/vm/laptop_mode 0
+		#write /proc/sys/vm/min_free_kbytes 12288
+		#write /proc/sys/vm/dirty_ratio 20
+		#write /proc/sys/vm/dirty_background_ratio 5
+		#write /proc/sys/vm/oom_kill_allocating_task 0
+		#write /proc/sys/vm/laptop_mode 0
 
 	# LKM
 	#  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
@@ -443,11 +443,11 @@ on property:persist.spectrum.profile=2
 
 	# VM
 		write /proc/sys/vm/swappiness 40
-		write /proc/sys/vm/min_free_kbytes 6764
-		write /proc/sys/vm/dirty_ratio 90
-		write /proc/sys/vm/dirty_background_ratio 70
-		write /proc/sys/vm/oom_kill_allocating_task 0
-		write /proc/sys/vm/laptop_mode 0
+		#write /proc/sys/vm/min_free_kbytes 6764
+		#write /proc/sys/vm/dirty_ratio 90
+		#write /proc/sys/vm/dirty_background_ratio 70
+		#write /proc/sys/vm/oom_kill_allocating_task 0
+		#write /proc/sys/vm/laptop_mode 0
 
 	# LKM
 	# chmod 666 /sys/module/lowmemorykiller/parameters/minfree
@@ -581,11 +581,11 @@ on property:persist.spectrum.profile=3
 
 	# VM
 		write /proc/sys/vm/swappiness 100
-		write /proc/sys/vm/min_free_kbytes 8192
-		write /proc/sys/vm/dirty_ratio 10
-		write /proc/sys/vm/dirty_background_ratio 10
-		write /proc/sys/vm/oom_kill_allocating_task 0
-		write /proc/sys/vm/laptop_mode 0
+		#write /proc/sys/vm/min_free_kbytes 8192
+		#write /proc/sys/vm/dirty_ratio 10
+		#write /proc/sys/vm/dirty_background_ratio 10
+		#write /proc/sys/vm/oom_kill_allocating_task 0
+		#write /proc/sys/vm/laptop_mode 0
 
 	# LKM
 	#  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
