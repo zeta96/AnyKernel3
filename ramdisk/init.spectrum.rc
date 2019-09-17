@@ -42,7 +42,7 @@ on property:sys.boot_completed=1
    # Enable Spectrum support
    setprop spectrum.support 1
    # Add kernel name
-   setprop persist.spectrum.kernel Luuvy
+   setprop persist.spectrum.kernel Luuvy.X.
 
 # Balance (default profile)
 on property:persist.spectrum.profile=0
@@ -167,8 +167,8 @@ on property:persist.spectrum.profile=0
 	# VM
 		write /proc/sys/vm/swappiness 60
 		#write /proc/sys/vm/min_free_kbytes 6764
-		#write /proc/sys/vm/dirty_ratio 20
-		#write /proc/sys/vm/dirty_background_ratio 5
+		write /proc/sys/vm/dirty_ratio 30
+		write /proc/sys/vm/dirty_background_ratio 5
 		#write /proc/sys/vm/oom_kill_allocating_task 0
 		#write /proc/sys/vm/laptop_mode 0
 
@@ -180,7 +180,7 @@ on property:persist.spectrum.profile=0
 	 # write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
 	# Misc
-	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
+	  write /proc/sys/net/ipv4/tcp_congestion_control westwood
 	  
 
 # Performance
@@ -305,8 +305,8 @@ on property:persist.spectrum.profile=1
 	# VM
 		write /proc/sys/vm/swappiness 0
 		#write /proc/sys/vm/min_free_kbytes 12288
-		#write /proc/sys/vm/dirty_ratio 20
-		#write /proc/sys/vm/dirty_background_ratio 5
+		write /proc/sys/vm/dirty_ratio 15
+		write /proc/sys/vm/dirty_background_ratio 5
 		#write /proc/sys/vm/oom_kill_allocating_task 0
 		#write /proc/sys/vm/laptop_mode 0
 
@@ -318,7 +318,7 @@ on property:persist.spectrum.profile=1
 	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
 
 	# Misc
-	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
+	  write /proc/sys/net/ipv4/tcp_congestion_control westwood
 
 
 # Battery
@@ -444,8 +444,8 @@ on property:persist.spectrum.profile=2
 	# VM
 		write /proc/sys/vm/swappiness 40
 		#write /proc/sys/vm/min_free_kbytes 6764
-		#write /proc/sys/vm/dirty_ratio 90
-		#write /proc/sys/vm/dirty_background_ratio 70
+		write /proc/sys/vm/dirty_ratio 40
+		write /proc/sys/vm/dirty_background_ratio 10
 		#write /proc/sys/vm/oom_kill_allocating_task 0
 		#write /proc/sys/vm/laptop_mode 0
 
@@ -457,7 +457,7 @@ on property:persist.spectrum.profile=2
 	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
 
 	# Misc
-	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
+	  write /proc/sys/net/ipv4/tcp_congestion_control westwood
 
 # Gaming
 on property:persist.spectrum.profile=3
@@ -582,8 +582,8 @@ on property:persist.spectrum.profile=3
 	# VM
 		write /proc/sys/vm/swappiness 100
 		#write /proc/sys/vm/min_free_kbytes 8192
-		#write /proc/sys/vm/dirty_ratio 10
-		#write /proc/sys/vm/dirty_background_ratio 10
+		write /proc/sys/vm/dirty_ratio 15
+		write /proc/sys/vm/dirty_background_ratio 5
 		#write /proc/sys/vm/oom_kill_allocating_task 0
 		#write /proc/sys/vm/laptop_mode 0
 
@@ -595,4 +595,4 @@ on property:persist.spectrum.profile=3
     	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 202640
 
 	# Misc
-	  write /proc/sys/net/ipv4/tcp_congestion_control cubic
+	  write /proc/sys/net/ipv4/tcp_congestion_control westwood
