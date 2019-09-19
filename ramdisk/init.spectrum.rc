@@ -166,16 +166,16 @@ on property:persist.spectrum.profile=0
 	    
 	# VM
 		write /proc/sys/vm/swappiness 60
-		#write /proc/sys/vm/min_free_kbytes 6764
+		write /proc/sys/vm/min_free_kbytes 5463
 		write /proc/sys/vm/dirty_ratio 30
 		write /proc/sys/vm/dirty_background_ratio 5
-		#write /proc/sys/vm/oom_kill_allocating_task 0
-		#write /proc/sys/vm/laptop_mode 0
+		write /proc/sys/vm/oom_kill_allocating_task 0
+		write /proc/sys/vm/laptop_mode 0
 
 	# LKM
-	 # chmod 666 /sys/module/lowmemorykiller/parameters/minfree
-	 # chown root /sys/module/lowmemorykiller/parameters/minfree
-	 # write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,32256,55296,80640
+	  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
+	  chown root /sys/module/lowmemorykiller/parameters/minfree
+	  write /sys/module/lowmemorykiller/parameters/minfree 9322,13983,23305,27966,41949,51271
 	 # write /sys/module/lowmemorykiller/parameters/cost 32
 	 # write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
@@ -304,16 +304,16 @@ on property:persist.spectrum.profile=1
 
 	# VM
 		write /proc/sys/vm/swappiness 0
-		#write /proc/sys/vm/min_free_kbytes 12288
+		write /proc/sys/vm/min_free_kbytes 7684
 		write /proc/sys/vm/dirty_ratio 15
 		write /proc/sys/vm/dirty_background_ratio 5
-		#write /proc/sys/vm/oom_kill_allocating_task 0
-		#write /proc/sys/vm/laptop_mode 0
+		write /proc/sys/vm/oom_kill_allocating_task 0
+		write /proc/sys/vm/laptop_mode 0
 
 	# LKM
-	#  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
-	#  chown root /sys/module/lowmemorykiller/parameters/minfree
-	#  write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,51256,89600,115200
+	  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
+	  chown root /sys/module/lowmemorykiller/parameters/minfree
+	  write /sys/module/lowmemorykiller/parameters/minfree 9322,18644,23305,27966,51271,65254
 	#  write /sys/module/lowmemorykiller/parameters/cost 32
 	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
 
@@ -443,16 +443,16 @@ on property:persist.spectrum.profile=2
 
 	# VM
 		write /proc/sys/vm/swappiness 40
-		#write /proc/sys/vm/min_free_kbytes 6764
+		write /proc/sys/vm/min_free_kbytes 5463
 		write /proc/sys/vm/dirty_ratio 40
 		write /proc/sys/vm/dirty_background_ratio 10
-		#write /proc/sys/vm/oom_kill_allocating_task 0
-		#write /proc/sys/vm/laptop_mode 0
+		write /proc/sys/vm/oom_kill_allocating_task 0
+		write /proc/sys/vm/laptop_mode 0
 
 	# LKM
-	# chmod 666 /sys/module/lowmemorykiller/parameters/minfree
-	#  chown root /sys/module/lowmemorykiller/parameters/minfree
-	#  write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,32256,55296,80640
+	 chmod 666 /sys/module/lowmemorykiller/parameters/minfree
+	 chown root /sys/module/lowmemorykiller/parameters/minfree
+	 write /sys/module/lowmemorykiller/parameters/minfree 9322,13983,23305,27966,41949,51271
 	#  write /sys/module/lowmemorykiller/parameters/cost 32
 	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
 
@@ -581,16 +581,16 @@ on property:persist.spectrum.profile=3
 
 	# VM
 		write /proc/sys/vm/swappiness 100
-		#write /proc/sys/vm/min_free_kbytes 8192
+		write /proc/sys/vm/min_free_kbytes 7684
 		write /proc/sys/vm/dirty_ratio 15
 		write /proc/sys/vm/dirty_background_ratio 5
-		#write /proc/sys/vm/oom_kill_allocating_task 0
-		#write /proc/sys/vm/laptop_mode 0
+		write /proc/sys/vm/oom_kill_allocating_task 0
+		write /proc/sys/vm/laptop_mode 0
 
 	# LKM
-	#  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
-	 # chown root /sys/module/lowmemorykiller/parameters/minfree
-	#  write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,51256,150296,200640
+	 chmod 666 /sys/module/lowmemorykiller/parameters/minfree
+	 chown root /sys/module/lowmemorykiller/parameters/minfree
+	 write /sys/module/lowmemorykiller/parameters/minfree 9322,18644,23305,27966,51271,65254
 	#  write /sys/module/lowmemorykiller/parameters/cost 16
     	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 202640
 
