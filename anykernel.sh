@@ -112,6 +112,14 @@ elif [ "$(file_getprop $script do.force_encryption)" == 1 ] &&
 	fi;
 fi;
 
+# Set Android version for kernel
+ver="$(file_getprop /system/build.prop ro.build.version.release)"
+if [ ! -z "$ver" ]; then
+  patch_cmdline "androidboot.version" "androidboot.version=$ver"
+else
+  patch_cmdline "androidboot.version" ""
+fi;
+
 # Clean up other kernels' ramdisk files before installing ramdisk
 rm -rf /system/vendor/etc/init/init.spectrum.rc
 rm -rf /system/vendor/etc/init/init.spectrum.sh
