@@ -169,7 +169,7 @@ on property:persist.spectrum.profile=0
 	# LKM
 	  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
 	  chown root /sys/module/lowmemorykiller/parameters/minfree
-	  write /sys/module/lowmemorykiller/parameters/minfree 4664,9328,23320,27984,41976,51304
+	  write /sys/module/lowmemorykiller/parameters/minfree 9328,13992,23320,27984,41976,51304
 	 # write /sys/module/lowmemorykiller/parameters/cost 32
 	 # write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
@@ -301,7 +301,7 @@ on property:persist.spectrum.profile=1
 	# LKM
 	  chmod 666 /sys/module/lowmemorykiller/parameters/minfree
 	  chown root /sys/module/lowmemorykiller/parameters/minfree
-	  write /sys/module/lowmemorykiller/parameters/minfree 4664,13992,23320,27984,51304,65296
+	  write /sys/module/lowmemorykiller/parameters/minfree 9328,18656,23320,27984,51304,65296
 	#  write /sys/module/lowmemorykiller/parameters/cost 32
 	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
 
@@ -434,7 +434,7 @@ on property:persist.spectrum.profile=2
 	# LKM
 	 chmod 666 /sys/module/lowmemorykiller/parameters/minfree
 	 chown root /sys/module/lowmemorykiller/parameters/minfree
-	 write /sys/module/lowmemorykiller/parameters/minfree 4664,9328,23320,27984,41976,51304
+	 write /sys/module/lowmemorykiller/parameters/minfree 9328,13992,23320,27984,41976,51304
 	#  write /sys/module/lowmemorykiller/parameters/cost 32
 	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 128000
 
@@ -566,7 +566,7 @@ on property:persist.spectrum.profile=3
 	# LKM
 	 chmod 666 /sys/module/lowmemorykiller/parameters/minfree
 	 chown root /sys/module/lowmemorykiller/parameters/minfree
-	 write /sys/module/lowmemorykiller/parameters/minfree 4664,13992,23320,27984,51304,65296
+	 write /sys/module/lowmemorykiller/parameters/minfree 9328,18656,23320,27984,51304,65296
 	#  write /sys/module/lowmemorykiller/parameters/cost 16
     	#  write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 202640
 
