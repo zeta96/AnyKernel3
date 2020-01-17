@@ -288,8 +288,7 @@ if [ "$supported_ver" ]; then
     abort " " "Unsupported Android version. Aborting...";
   fi;
   if [ "$android_ver" = 10 ]; then
-    ui_print "Android 10 detected, please reflash Magisk after flashing this kernel!";
-    ui_print " ";
+    ui_print "- Please reflash Magisk after flashing this kernel!";
   fi;
 fi;
 
