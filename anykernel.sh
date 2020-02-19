@@ -63,7 +63,7 @@ if [ $(mount | grep f2fs | wc -l) -gt "0" ] &&
 ui_print " "; ui_print "Found fstab: $fstab";
 ui_print "- Adding f2fs support to fstab...";
 
-insert_line $fstab "data        f2fs" before "data        ext4" "/dev/block/bootdevice/by-name/userdata     /data        f2fs    nosuid,nodev,noatime,inline_xattr,data_flush      wait,check,encryptable=footer,formattable,length=-16384";
+insert_line $fstab "data        f2fs" before "data        ext4" "/dev/block/bootdevice/by-name/userdata     /data        f2fs    noatime,nosuid,nodev,nodiratime,discard,fsync_mode=nobarrier,background_gc=off,inline_xattr,inline_data,data_flush      wait,check,encryptable=footer,formattable,length=-16384";
 insert_line $fstab "cache        f2fs" after "data        ext4" "/dev/block/bootdevice/by-name/cache     /cache        f2fs    nosuid,nodev,noatime,inline_xattr,flush_merge,data_flush wait,formattable,check";
 
 	if [ $(cat $fstab | grep f2fs | wc -l) -eq "0" ]; then
