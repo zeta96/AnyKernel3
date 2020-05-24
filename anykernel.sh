@@ -185,6 +185,18 @@ rm -rf /system/etc/init/init.spectrum.sh
 rm -rf /init.spectrum.rc
 rm -rf /init.spectrum.sh
 
+#custom kernel profiler
+if [ -e $ramdisk/kernel_profiler ]; then
+        # Inject Kernel Profiler support
+	if [ -e /data/kernel_profiler ]; then
+	        # Remove old files
+		rm -rf /data/kernel_profiler/*
+		mv $ramdisk/kernel_profiler/* /data/kernel_profiler/
+	else
+        	mv $ramdisk/kernel_profiler/ /data/
+	fi
+fi
+
 # fix selinux denials for /init.*.sh
 $home/tools/magiskpolicy --load sepolicy --save $home/ramdisk/sepolicy \
 "allow init rootfs file execute_no_trans" \
