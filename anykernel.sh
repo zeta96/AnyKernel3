@@ -120,12 +120,22 @@ else
 fi;
 
 # Clean up other kernels' ramdisk files before installing ramdisk
+rm -rf /system/vendor/bin/init.spectrum.rc
+rm -rf /system/vendor/bin/init.spectrum.sh
+rm -rf /system/vendor/bin/hw/init.spectrum.rc
+rm -rf /system/vendor/bin/hw/init.spectrum.sh
 rm -rf /system/vendor/etc/init/init.spectrum.rc
 rm -rf /system/vendor/etc/init/init.spectrum.sh
 rm -rf /system/vendor/etc/init/hw/init.spectrum.rc
 rm -rf /system/vendor/etc/init/hw/init.spectrum.sh
+rm -rf /system/bin/init.spectrum.rc
+rm -rf /system/bin/init.spectrum.sh
+rm -rf /system/bin/hw/init.spectrum.rc
+rm -rf /system/bin/hw/init.spectrum.sh
 rm -rf /system/etc/init/init.spectrum.rc
 rm -rf /system/etc/init/init.spectrum.sh
+rm -rf /system/etc/init/hw/init.spectrum.rc
+rm -rf /system/etc/init/hw/init.spectrum.sh
 rm -rf /init.spectrum.rc
 rm -rf /init.spectrum.sh
 rm -rf /init.performance_profiles.rc
