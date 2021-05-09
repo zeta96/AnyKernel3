@@ -291,7 +291,6 @@ do_devicecheck() {
   else
     ui_print "- Treble Status: Not supported";
    # dtb=/tmp/anykernel/dtb-nontreble;
-  ui_print " ";
   fi;
 }
 int2ver() {
@@ -487,19 +486,63 @@ setup_env;
 
 do_devicecheck;
 ui_print " ";
-do_versioncheck;
-ui_print " ";
+#do_versioncheck;
+#ui_print " ";
 #do_levelcheck;
 #ui_print " ";
 
 if [ "$(cat /dev/block/bootdevice/by-name/boot | grep -m 1 androidboot | grep permissive | wc -l)" -gt "0" ]; then
   ui_print "Permissive Selinux detected";
-  ui_print " ";
 else
   ui_print "Enforcing Selinux detected";
-  ui_print " ";
 fi;
 
+#fstab.qcom
+if [ -e fstab.qcom ]; then
+	fstab=fstab.qcom;
+elif [ -e /system/vendor/etc/fstab.qcom ]; then
+	fstab=/system/vendor/etc/fstab.qcom;
+elif [ -e /system/etc/fstab.qcom ]; then
+	fstab=/system/etc/fstab.qcom;
+fi;
+
+if [ $(cat $fstab | grep forceencypt | wc -l) -gt "0" ]; then
+	ui_print " "; ui_print "Force encryption is enabled";
+	if [ "$(file_getprop $script do.rem_encryption)" == 0 ]; then
+		ui_print "- Force encryption removal is off!";
+	else
+		ui_print "- Force encryption removal is on!";
+	fi;
+elif [ $(cat $fstab | grep encryptable | wc -l) -gt "0" ]; then
+	ui_print " "; ui_print "Force encryption is not enabled";
+	if [ "$(file_getprop $script do.force_encryption)" == 0 ]; then
+		ui_print "- Force encryption is off!";
+	else
+		ui_print "- Force encryption is on!";
+	fi;
+fi;
+
+if [ "$(file_getprop $script do.rem_encryption)" == 1 ] &&
+   [ $(cat $fstab | grep forceencypt | wc -l) -gt "0" ]; then
+	sed -i 's/forceencrypt/encryptable/g' $fstab
+	if [ $(cat $fstab | grep forceencrypt | wc -l) -eq "0" ]; then
+		ui_print "- Removed force encryption flag!";
+	else
+		ui_print "- Failed to remove force encryption!";
+		exit 1;
+	fi;
+elif [ "$(file_getprop $script do.force_encryption)" == 1 ] &&
+     [ $(cat $fstab | grep encryptable | wc -l) -gt "0" ]; then
+	sed -i 's/encryptable/forceencrypt/g' $fstab
+	if [ $(cat $fstab | grep encryptable | wc -l) -eq "0" ]; then
+		ui_print "- Added force encryption flag!";
+	else
+		ui_print "- Failed to add force encryption!";
+		exit 1;
+	fi;
+fi;
+
+ui_print " ";  
 ui_print "Rom info";
 username="$(file_getprop /system/build.prop "ro.build.user")";
 ui_print "- User: $username";
@@ -537,4 +580,4 @@ fstrim -v /cache;
 fstrim -v /data;
 fstrim -v /system;
 
-ui_print " " " " "Done!";
+ui_print  " " "Done!";
