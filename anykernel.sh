@@ -41,7 +41,7 @@ mount -o remount,rw /sbin;
 mount -o remount,rw /data;
 mount -o remount,rw /storage;
 
-## AnyKernel install
+## AnyKernel boot install
 dump_boot;
 
 # Clean up other kernels' ramdisk files before installing ramdisk
@@ -179,4 +179,21 @@ $home/tools/magiskpolicy --load sepolicy --save $home/ramdisk/sepolicy \
 # end ramdisk changes
 
 write_boot;
-## end install
+## end boot install
+
+
+# shell variables
+#block=vendor_boot;
+#is_slot_device=1;
+#ramdisk_compression=auto;
+
+# reset for vendor_boot patching
+#reset_ak;
+
+
+## AnyKernel vendor_boot install
+#split_boot; # skip unpack/repack ramdisk since we don't need vendor_ramdisk access
+
+#flash_boot;
+## end vendor_boot install
+
