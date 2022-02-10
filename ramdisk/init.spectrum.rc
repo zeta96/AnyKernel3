@@ -1,18 +1,12 @@
-#######_____________________________________#######
-#              Luuvy Kernel Tweak            	  #
-#                    		                  #
-#                                                 #
-# SPECTRUM KERNEL MANAGER                         #
-# Ramdisk file for profile based kernel management#
-# Implimentation inspired by Franco's fku profiles#
-#                                                 #
-# 						  # 
-#######_____________________________________#######
+# Luuvy Kernel Tweak
+# Spectrum and Franco kernel manager
+# Ramdisk file for profile based kernel management
+# Implimentation inspired by Franco's fku profiles
 
 # Initialization
 
 on init
- ## zram madness
+ # zram madness
     exec u:r:init:s0 -- /system/bin/swapoff /dev/block/zram0
     exec u:r:su:s0 -- /system/bin/swapoff /dev/block/zram0
     exec u:r:magisk:s0 -- /system/bin/swapoff /dev/block/zram0
@@ -33,20 +27,15 @@ on post-fs
     exec u:r:supersu:s0 -- /system/bin/swapon /dev/block/zram0
 
 on property:sys.boot_completed=1
-   # Set default profile on first boot
-   setprop persist.spectrum.profile 0
-   ## exec u:r:init:s0 -- /system/vendor/etc/init/init.spectrum.sh
-   ## exec u:r:init:s0 root root -- /system/vendor/etc/init/init.spectrum.sh
-   ## exec u:r:su:s0 root root -- /system/vendor/etc/init/init.spectrum.sh
-   ## exec u:r:magisk:s0 root root -- /system/vendor/etc/init/init.spectrum.sh
-   ## exec u:r:supersu:s0 root root -- /system/vendor/etc/init/init.spectrum.sh
-   # Enable Spectrum support
-   setprop spectrum.support 1
-   # Add kernel name
-   setprop persist.spectrum.kernel Luuvy.C.
+    exec u:r:init:s0 -- /system/bin/sh /system/etc/init/init.spectrum.sh
+    exec u:r:init:s0 root root -- /system/bin/sh /system/etc/init/init.spectrum.sh
+    exec u:r:su:s0 root root -- /system/bin/sh /system/etc/init/init.spectrum.sh
+    exec u:r:magisk:s0 root root -- /system/bin/sh /system/etc/init/init.spectrum.sh
+    exec u:r:supersu:s0 root root -- /system/bin/sh /system/etc/init/init.spectrum.sh
 
+# Luuvy Profiles
 # Balance (default profile)
-on property:persist.spectrum.profile=0
+on property:persist.luuvy.profile=balance
 	#/* Max CPU control Big*/
 	  chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 	  write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1401000
@@ -81,7 +70,7 @@ on property:persist.spectrum.profile=0
 	  write /proc/sys/net/ipv4/tcp_congestion_control bbr
 
 # Performance
-on property:persist.spectrum.profile=1
+on property:persist.luuvy.profile=performance
 	  #/* Max CPU control Big*/
 	  chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 	  write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1401000
@@ -107,16 +96,15 @@ on property:persist.spectrum.profile=1
 	# GPU
 	  write /sys/class/kgsl/kgsl-3d0/max_gpuclk 475000000
 	  write /sys/class/kgsl/kgsl-3d0/min_clock_mhz 300
-	  write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
+	  write /sys/class/kgsl/kgsl-3d0/devfreq/governor performance
 	  write /sys/kernel/gpu/gpu_min_clock 300
 	  write /sys/kernel/gpu/gpu_max_clock 475
 
 	# Misc
 	  write /proc/sys/net/ipv4/tcp_congestion_control bbr
 
-
 # Battery
-on property:persist.spectrum.profile=2
+on property:persist.luuvy.profile=battery
 	  #/* Max CPU control Big*/
 	  chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 	  write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1401000
@@ -142,7 +130,7 @@ on property:persist.spectrum.profile=2
 	# GPU
 	  write /sys/class/kgsl/kgsl-3d0/max_gpuclk 450000000
 	  write /sys/class/kgsl/kgsl-3d0/min_clock_mhz 216
-	  write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
+	  write /sys/class/kgsl/kgsl-3d0/devfreq/governor powersave
 	  write /sys/kernel/gpu/gpu_min_clock 216
 	  write /sys/kernel/gpu/gpu_max_clock 450
 
@@ -150,7 +138,7 @@ on property:persist.spectrum.profile=2
 	  write /proc/sys/net/ipv4/tcp_congestion_control bbr
 
 # Gaming
-on property:persist.spectrum.profile=3
+on property:persist.luuvy.profile=gaming
 	  #/* Max CPU control Big*/
 	  chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 	  write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1401000
@@ -182,3 +170,36 @@ on property:persist.spectrum.profile=3
 
 	# Misc
 	  write /proc/sys/net/ipv4/tcp_congestion_control bbr
+
+
+# Profile bridges: Spectrum
+# Balanced
+on property:persist.spectrum.profile=0
+	setprop persist.luuvy.profile balance
+
+# Battery
+on property:persist.spectrum.profile=2
+	setprop persist.luuvy.profile battery
+
+# Performance
+on property:persist.spectrum.profile=1
+	setprop persist.luuvy.profile performance
+
+# Gaming
+on property:persist.spectrum.profile=3
+	setprop persist.luuvy.profile gaming
+
+
+# Profile bridges: Franco Kernel Manager
+# Update the Spectrum profile setting
+# Powersave
+on property:fku.perf.profile=0
+	setprop persist.spectrum.profile 2
+
+# Balance
+on property:fku.perf.profile=1
+	setprop persist.spectrum.profile 0
+
+# Performance
+on property:fku.perf.profile=2
+	setprop persist.spectrum.profile 1
