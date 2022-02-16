@@ -69,8 +69,8 @@ SELINUX_FILE2=$TMPSYSROOT/system/vendor/etc/selinux/precompiled_sepolicy
 if [ -e "$INIT_FILE1" ]; then
 INIT_RC=$INIT_FILE1
 INIT=$INIT_PATH1
-ui_print "- found init folder : $INIT"
-ui_print "- found init file : $INIT_RC"
+ui_print "- found init folder"
+ui_print "- found init file"
 remove_line $INIT_RC "import /init.spectrum.rc";
 remove_line $INIT_RC "import /vendor/etc/init/hw/init.spectrum.rc";
 remove_line $INIT_RC "import /vendor/etc/init/init.spectrum.rc";
@@ -84,8 +84,8 @@ insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /i
 elif [ -e "$INIT_FILE2" ]; then
 INIT_RC=$INIT_FILE2
 INIT=$INIT_PATH2
-ui_print "- found init folder : $INIT"
-ui_print "- found init file : $INIT_RC"
+ui_print "- found init folder"
+ui_print "- found init file"
 remove_line $INIT_RC "import /init.spectrum.rc";
 remove_line $INIT_RC "import /vendor/etc/init/hw/init.spectrum.rc";
 remove_line $INIT_RC "import /vendor/etc/init/init.spectrum.rc";
@@ -99,8 +99,8 @@ insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /s
 elif [ -e "$INIT_FILE3" ]; then
 INIT_RC=$INIT_FILE3
 INIT=$INIT_PATH3
-ui_print "- found init folder : $INIT"
-ui_print "- found init file : $INIT_RC"
+ui_print "- found init folder"
+ui_print "- found init file"
 remove_line $INIT_RC "import /init.spectrum.rc";
 remove_line $INIT_RC "import /vendor/etc/init/hw/init.spectrum.rc";
 remove_line $INIT_RC "import /vendor/etc/init/init.spectrum.rc";
@@ -188,7 +188,7 @@ chmod 644 $INIT/init.spectrum.sh
 # Method load-split and split sepolicy for treble don't work for now
 if [ -e "$SELINUX_FILE1" ]; then
 SELINUX=$SELINUX_FILE1
-ui_print "- found selinux file : $SELINUX"
+ui_print "- found selinux file"
 $home/tools/magiskpolicy --load $SELINUX --save $SELINUX \
 "allow init rootfs file execute_no_trans" \
 "allow init sysfs_devices_system_cpu file write" \
@@ -234,7 +234,7 @@ $home/tools/magiskpolicy --load $SELINUX --save $SELINUX \
 "allow toolbox init fifo_file { getattr write }"
 elif [ -e "$SELINUX_FILE2" ]; then
 SELINUX=$SELINUX_FILE2
-ui_print "- found selinux file : $SELINUX"
+ui_print "- found selinux file"
 $home/tools/magiskpolicy --load $SELINUX --save $SELINUX \
 "allow init rootfs file execute_no_trans" \
 "allow init sysfs_devices_system_cpu file write" \
@@ -285,7 +285,7 @@ fi;
 
 # check spectrum
 if [ -e "$INIT/init.spectrum.rc" ]; then
-   ui_print "- spectrum/fkm is ok : $INIT/init.spectrum.rc"
+   ui_print "- spectrum/fkm is ok"
 else
 	ui_print "!- installing spectrum/fkm failed"
 fi;
