@@ -1,14 +1,8 @@
-#######_____________________________________#######
-#              Luuvy Kernel Tweak            	  #
-#                    		                  #
-#                                                 #
-# SPECTRUM KERNEL MANAGER                         #
-# Ramdisk file for profile based kernel management#
-# Implimentation inspired by Franco's fku profiles#
-#                                                 #
-# 						  #                 
-#######_____________________________________#######
-
+# Luuvy Kernel Tweak
+# Spectrum and Franco kernel manager
+# Ramdisk file for profile based kernel management
+# Implimentation inspired by Franco's fku profiles
+ 
 # Initialization
 
 on init
@@ -33,20 +27,15 @@ on post-fs
     exec u:r:supersu:s0 -- /system/bin/swapon /dev/block/zram0
     
 on property:sys.boot_completed=1
-   # Set default profile on first boot
-   setprop persist.spectrum.profile 0
-   ## exec u:r:init:s0 -- /system/vendor/etc/init/init.spectrum.sh
-   ## exec u:r:init:s0 root root -- /system/vendor/etc/init/init.spectrum.sh
-   ## exec u:r:su:s0 root root -- /system/vendor/etc/init/init.spectrum.sh
-   ## exec u:r:magisk:s0 root root -- /system/vendor/etc/init/init.spectrum.sh
-   ## exec u:r:supersu:s0 root root -- /system/vendor/etc/init/init.spectrum.sh
-   # Enable Spectrum support
-   setprop spectrum.support 1
-   # Add kernel name
-   setprop persist.spectrum.kernel Luuvy.S.
+    exec u:r:init:s0 -- /system/bin/sh /system/vendor/etc/init/init.spectrum.sh
+    exec u:r:init:s0 root root -- /system/bin/sh /system/vendor/etc/init/init.spectrum.sh
+    exec u:r:su:s0 root root -- /system/bin/sh /system/vendor/etc/init/init.spectrum.sh
+    exec u:r:magisk:s0 root root -- /system/bin/sh /system/vendor/etc/init/init.spectrum.sh
+    exec u:r:supersu:s0 root root -- /system/bin/sh /system/vendor/etc/init/init.spectrum.sh
 
+# Luuvy Profiles
 # Balance (default profile)
-on property:persist.spectrum.profile=0
+on property:persist.luuvy.profile=balance
 	#/* Max CPU control Big*/
 	  write /sys/module/msm_performance/parameters/cpu_max_freq 0:1401000
 	  write /sys/module/msm_performance/parameters/cpu_max_freq 1:1401000
@@ -165,7 +154,7 @@ on property:persist.spectrum.profile=0
 	  
 
 # Performance
-on property:persist.spectrum.profile=1
+on property:persist.luuvy.profile=performance
 	  #/* Max CPU control Big*/
 	  write /sys/module/msm_performance/parameters/cpu_max_freq 0:1401000
 	  write /sys/module/msm_performance/parameters/cpu_max_freq 1:1401000
@@ -283,7 +272,7 @@ on property:persist.spectrum.profile=1
 
 
 # Battery
-on property:persist.spectrum.profile=2
+on property:persist.luuvy.profile=battery
 	  #/* Max CPU control Big*/
 	  write /sys/module/msm_performance/parameters/cpu_max_freq 0:1401000
 	  write /sys/module/msm_performance/parameters/cpu_max_freq 1:1401000
@@ -401,7 +390,7 @@ on property:persist.spectrum.profile=2
 	  write /proc/sys/net/ipv4/tcp_congestion_control westwood
 
 # Gaming
-on property:persist.spectrum.profile=3
+on property:persist.luuvy.profile=gaming
 	  #/* Max CPU control Big*/
 	  write /sys/module/msm_performance/parameters/cpu_max_freq 0:1401000
 	  write /sys/module/msm_performance/parameters/cpu_max_freq 1:1401000
@@ -517,3 +506,36 @@ on property:persist.spectrum.profile=3
 	  
 	# Misc
 	  write /proc/sys/net/ipv4/tcp_congestion_control westwood
+
+
+# Profile bridges: Spectrum
+# Balanced
+on property:persist.spectrum.profile=0
+	setprop persist.luuvy.profile balance
+
+# Battery
+on property:persist.spectrum.profile=2
+	setprop persist.luuvy.profile battery
+
+# Performance
+on property:persist.spectrum.profile=1
+	setprop persist.luuvy.profile performance
+
+# Gaming
+on property:persist.spectrum.profile=3
+	setprop persist.luuvy.profile gaming
+
+
+# Profile bridges: Franco Kernel Manager
+# Update the Spectrum profile setting
+# Powersave
+on property:fku.perf.profile=0
+	setprop persist.spectrum.profile 2
+
+# Balance
+on property:fku.perf.profile=1
+	setprop persist.spectrum.profile 0
+
+# Performance 
+on property:fku.perf.profile=2
+	setprop persist.spectrum.profile 1
