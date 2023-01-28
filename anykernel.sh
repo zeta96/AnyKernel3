@@ -217,6 +217,7 @@ $home/tools/magiskpolicy --load $SELINUX --save $SELINUX \
 "allow thermal-engine vendor_init file { read open }" \
 "allow vendor_init proc_dirty_ratio file write" \
 "allow vendor_init proc_dirty file write" \
+"allow vendor_init default_prop file  { read write }" \
 "allow init init udp_socket ioctl" \
 "allow init init socket read" \
 "allow init object_r chr_file ioctl" \
@@ -263,6 +264,7 @@ $home/tools/magiskpolicy --load $SELINUX --save $SELINUX \
 "allow thermal-engine vendor_init file { read open }" \
 "allow vendor_init proc_dirty_ratio file write" \
 "allow vendor_init proc_dirty file write" \
+"allow vendor_init default_prop file  { read write }" \
 "allow init init udp_socket ioctl" \
 "allow init init socket read" \
 "allow init object_r chr_file ioctl" \
