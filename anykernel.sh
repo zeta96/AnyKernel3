@@ -81,8 +81,8 @@ remove_line $INIT_RC "import /system/vendor/etc/init/init.spectrum.rc";
 remove_line $INIT_RC "import /system/etc/init/hw/init.spectrum.rc";
 remove_line $INIT_RC "import /system/etc/init/init.spectrum.rc";
 backup_file $INIT_RC;
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /init.environ.rc" "import /system/etc/init/init.spectrum.rc";
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /init.usb.rc" "import /system/etc/init/init.spectrum.rc";
+insert_line $INIT_RC "import $INIT/init.spectrum.rc" after "import /init.environ.rc" "import $INIT/init.spectrum.rc";
+insert_line $INIT_RC "import $INIT/init.spectrum.rc" after "import /init.usb.rc" "import $INIT/init.spectrum.rc";
 elif [ -e "$INIT_FILE2" ]; then
 INIT_RC=$INIT_FILE2
 INIT=$INIT_PATH2
@@ -96,8 +96,8 @@ remove_line $INIT_RC "import /system/vendor/etc/init/init.spectrum.rc";
 remove_line $INIT_RC "import /system/etc/init/hw/init.spectrum.rc";
 remove_line $INIT_RC "import /system/etc/init/init.spectrum.rc";
 backup_file $INIT_RC;
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /init.environ.rc" "import /system/etc/init/init.spectrum.rc";
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /system/etc/init/hw/init.usb.rc" "import /system/etc/init/init.spectrum.rc";
+insert_line $INIT_RC "import $INIT/init.spectrum.rc" after "import /init.environ.rc" "import $INIT/init.spectrum.rc";
+insert_line $INIT_RC "import $INIT/init.spectrum.rc" after "import /system/etc/init/hw/init.usb.rc" "import $INIT/init.spectrum.rc";
 elif [ -e "$INIT_FILE3" ]; then
 INIT_RC=$INIT_FILE3
 INIT=$INIT_PATH3
@@ -111,8 +111,8 @@ remove_line $INIT_RC "import /system/vendor/etc/init/init.spectrum.rc";
 remove_line $INIT_RC "import /system/etc/init/hw/init.spectrum.rc";
 remove_line $INIT_RC "import /system/etc/init/init.spectrum.rc";
 backup_file $INIT_RC;
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /vendor/etc/init/hw/init.qcom.usb.rc" "import /system/etc/init/init.spectrum.rc";
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /vendor/etc/init/hw/init.extras.rc" "import /system/etc/init/init.spectrum.rc";
+insert_line $INIT_RC "import $INIT/init.spectrum.rc" after "import /vendor/etc/init/hw/init.qcom.usb.rc" "import $INIT/init.spectrum.rc";
+insert_line $INIT_RC "import $INIT/init.spectrum.rc" after "import /vendor/etc/init/hw/init.extras.rc" "import $INIT/init.spectrum.rc";
 else
 	ui_print "!- cannot find init folder or file location, make sure system is not empty."
 fi;
