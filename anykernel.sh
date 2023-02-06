@@ -113,14 +113,6 @@ if [ -e init.rc ]; then
 fi;
 #Spectrum========================================
 
-#remove other file spectrum if any
-rm -rf /system/vendor/etc/init/hw/init.spectrum.rc
-rm -rf /system/vendor/etc/init/hw/init.spectrum.sh
-rm -rf /system/etc/init/init.spectrum.rc
-rm -rf /system/etc/init/init.spectrum.sh
-rm -rf /init.spectrum.rc
-rm -rf /init.spectrum.sh
-
 #custom kernel profiler
 if [ -e $ramdisk/kernel_profiler ]; then
         # Inject Kernel Profiler support
