@@ -138,8 +138,9 @@ $home/tools/magiskpolicy --load sepolicy --save $home/ramdisk/sepolicy \
 "allow init rootfs file execute_no_trans" \
 "allow init sysfs_devices_system_cpu file write" \
 "allow init sysfs_msms_perf file write" \
-"allow init proc file { open write }" \
-"allow init sysfs file" \
+"allow init proc file { open read write}" \
+"allow init sysfs file { open read write }" \
+"allow init sysfs_kgsl lnk_file { open read write}" \
 "allow init vendor_configs_file file execute_no_trans" \
 "allow init su process transition" \
 "allow init su process { siginh rlimitinh }" \
@@ -159,6 +160,7 @@ $home/tools/magiskpolicy --load sepolicy --save $home/ramdisk/sepolicy \
 "allow thermal-engine vendor_init file { read open }" \
 "allow vendor_init proc_dirty_ratio file write" \
 "allow vendor_init proc_dirty file write" \
+"allow vendor_init default_prop file  { read write }" \
 "allow init init udp_socket ioctl" \
 "allow init init socket read" \
 "allow init object_r chr_file ioctl" \
