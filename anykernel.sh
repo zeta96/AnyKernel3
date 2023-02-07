@@ -68,55 +68,6 @@ INIT_PATH3=$TMPSYSROOT/system/vendor/etc/init
 SELINUX_FILE1=$TMPSYSROOT/sepolicy
 SELINUX_FILE2=$TMPSYSROOT/system/vendor/etc/selinux/precompiled_sepolicy
 
-if [ -e "$INIT_FILE1" ]; then
-INIT_RC=$INIT_FILE1
-INIT=$INIT_PATH1
-ui_print "- found init folder"
-ui_print "- found init file"
-remove_line $INIT_RC "import /init.spectrum.rc";
-remove_line $INIT_RC "import /vendor/etc/init/hw/init.spectrum.rc";
-remove_line $INIT_RC "import /vendor/etc/init/init.spectrum.rc";
-remove_line $INIT_RC "import /system/vendor/etc/init/hw/init.spectrum.rc";
-remove_line $INIT_RC "import /system/vendor/etc/init/init.spectrum.rc";
-remove_line $INIT_RC "import /system/etc/init/hw/init.spectrum.rc";
-remove_line $INIT_RC "import /system/etc/init/init.spectrum.rc";
-backup_file $INIT_RC;
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /init.environ.rc" "import /system/etc/init/init.spectrum.rc";
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /init.usb.rc" "import /system/etc/init/init.spectrum.rc";
-elif [ -e "$INIT_FILE2" ]; then
-INIT_RC=$INIT_FILE2
-INIT=$INIT_PATH2
-ui_print "- found init folder"
-ui_print "- found init file"
-remove_line $INIT_RC "import /init.spectrum.rc";
-remove_line $INIT_RC "import /vendor/etc/init/hw/init.spectrum.rc";
-remove_line $INIT_RC "import /vendor/etc/init/init.spectrum.rc";
-remove_line $INIT_RC "import /system/vendor/etc/init/hw/init.spectrum.rc";
-remove_line $INIT_RC "import /system/vendor/etc/init/init.spectrum.rc";
-remove_line $INIT_RC "import /system/etc/init/hw/init.spectrum.rc";
-remove_line $INIT_RC "import /system/etc/init/init.spectrum.rc";
-backup_file $INIT_RC;
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /init.environ.rc" "import /system/etc/init/init.spectrum.rc";
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /system/etc/init/hw/init.usb.rc" "import /system/etc/init/init.spectrum.rc";
-elif [ -e "$INIT_FILE3" ]; then
-INIT_RC=$INIT_FILE3
-INIT=$INIT_PATH3
-ui_print "- found init folder"
-ui_print "- found init file"
-remove_line $INIT_RC "import /init.spectrum.rc";
-remove_line $INIT_RC "import /vendor/etc/init/hw/init.spectrum.rc";
-remove_line $INIT_RC "import /vendor/etc/init/init.spectrum.rc";
-remove_line $INIT_RC "import /system/vendor/etc/init/hw/init.spectrum.rc";
-remove_line $INIT_RC "import /system/vendor/etc/init/init.spectrum.rc";
-remove_line $INIT_RC "import /system/etc/init/hw/init.spectrum.rc";
-remove_line $INIT_RC "import /system/etc/init/init.spectrum.rc";
-backup_file $INIT_RC;
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /vendor/etc/init/hw/init.qcom.usb.rc" "import /system/etc/init/init.spectrum.rc";
-insert_line $INIT_RC "import /system/etc/init/init.spectrum.rc" after "import /vendor/etc/init/hw/init.extras.rc" "import /system/etc/init/init.spectrum.rc";
-else
-	ui_print "!- cannot find init folder or file location, make sure system is not empty."
-fi;
-
 # Remove old spectrum
 if [ -e "$INIT/init.spectrum.rc" ]; then
 	rm -rf $INIT/init.spectrum.rc
@@ -180,11 +131,58 @@ rm -rf /storage/emulated/0/Spectrum/profiles/battery.profile
 rm -rf /storage/emulated/0/Spectrum/profiles/gaming.profile
 rm -rf /storage/emulated/0/Spectrum/profiles/performance.profile
 
+if [ -e "$INIT_FILE1" ]; then
+INIT_RC=$INIT_FILE1
+ui_print "- found init folder"
+ui_print "- found init file"
+remove_line $INIT_RC "import /init.spectrum.rc";
+remove_line $INIT_RC "import /vendor/etc/init/hw/init.spectrum.rc";
+remove_line $INIT_RC "import /vendor/etc/init/init.spectrum.rc";
+remove_line $INIT_RC "import /system/vendor/etc/init/hw/init.spectrum.rc";
+remove_line $INIT_RC "import /system/vendor/etc/init/init.spectrum.rc";
+remove_line $INIT_RC "import /system/etc/init/hw/init.spectrum.rc";
+remove_line $INIT_RC "import /system/etc/init/init.spectrum.rc";
+backup_file $INIT_RC;
+insert_line $INIT_RC "init.spectrum.rc" before "import /init.environ.rc" "import $INIT_PATH2/init.spectrum.rc";
+insert_line $INIT_RC "init.spectrum.rc" before "import /init.usb.rc" "import $INIT_PATH2/init.spectrum.rc";
+elif [ -e "$INIT_FILE2" ]; then
+INIT_RC=$INIT_FILE2
+ui_print "- found init folder"
+ui_print "- found init file"
+remove_line $INIT_RC "import /init.spectrum.rc";
+remove_line $INIT_RC "import /vendor/etc/init/hw/init.spectrum.rc";
+remove_line $INIT_RC "import /vendor/etc/init/init.spectrum.rc";
+remove_line $INIT_RC "import /system/vendor/etc/init/hw/init.spectrum.rc";
+remove_line $INIT_RC "import /system/vendor/etc/init/init.spectrum.rc";
+remove_line $INIT_RC "import /system/etc/init/hw/init.spectrum.rc";
+remove_line $INIT_RC "import /system/etc/init/init.spectrum.rc";
+backup_file $INIT_RC;
+insert_line $INIT_RC "init.spectrum.rc" before "import /init.environ.rc" "import $INIT_PATH2/init.spectrum.rc";
+insert_line $INIT_RC "init.spectrum.rc" before "import /system/etc/init/hw/init.usb.rc" "import $INIT_PATH2/init.spectrum.rc";
+elif [ -e "$INIT_FILE3" ]; then
+INIT_RC=$INIT_FILE3
+ui_print "- found init folder"
+ui_print "- found init file"
+remove_line $INIT_RC "import /init.spectrum.rc";
+remove_line $INIT_RC "import /vendor/etc/init/hw/init.spectrum.rc";
+remove_line $INIT_RC "import /vendor/etc/init/init.spectrum.rc";
+remove_line $INIT_RC "import /system/vendor/etc/init/hw/init.spectrum.rc";
+remove_line $INIT_RC "import /system/vendor/etc/init/init.spectrum.rc";
+remove_line $INIT_RC "import /system/etc/init/hw/init.spectrum.rc";
+remove_line $INIT_RC "import /system/etc/init/init.spectrum.rc";
+backup_file $INIT_RC;
+insert_line $INIT_RC "init.spectrum.rc" before "import /vendor/etc/init/hw/init.qcom.usb.rc" "import $INIT_PATH2/init.spectrum.rc";
+insert_line $INIT_RC "init.spectrum.rc" before "import /vendor/etc/init/hw/init.extras.rc" "import $INIT_PATH2/init.spectrum.rc";
+else
+	ui_print "!- cannot find init folder or file location, make sure system is not empty."
+fi;
+
+
 #Spectrum copy
-cp -rpf $home/ramdisk/init.spectrum.rc $INIT/init.spectrum.rc
-chmod 644 $INIT/init.spectrum.rc
-cp -rpf $home/ramdisk/init.spectrum.sh $INIT/init.spectrum.sh
-chmod 644 $INIT/init.spectrum.sh
+cp -rpf $home/ramdisk/init.spectrum.rc $INIT_PATH2/init.spectrum.rc
+chmod 644 $INIT_PATH2/init.spectrum.rc
+cp -rpf $home/ramdisk/init.spectrum.sh $INIT_PATH2/init.spectrum.sh
+chmod 644 $INIT_PATH2/init.spectrum.sh
 
 # Locate selinux file and fix selinux denials for /init.*  with force init to load the monolithic sepolicy at /
 # Method load-split and split sepolicy for treble don't work for now
@@ -288,7 +286,7 @@ fi;
 # end selinux 
 
 # check spectrum
-if [ -e "$INIT/init.spectrum.rc" ]; then
+if [ -e "$INIT_PATH2/init.spectrum.rc" ]; then
    ui_print "- spectrum/fkm is ok"
 else
 	ui_print "!- installing spectrum/fkm failed"
