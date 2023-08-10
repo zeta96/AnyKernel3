@@ -2,7 +2,7 @@
 ## osm0sis @ xda-developers
 
 ### AnyKernel setup
-# begin properties
+# global properties
 script="$0"
 properties() { '
 kernel.string=Luuvy kernel from Zamrud Khatulistiwa
@@ -18,6 +18,7 @@ device.name2=Redmi 4x
 supported.versions=
 supported.patchlevels=
 '; } # end properties
+
 
 ### AnyKernel install
 ## boot files attributes
