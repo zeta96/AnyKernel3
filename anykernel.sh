@@ -68,6 +68,9 @@ dump_boot; # use split_boot to skip ramdisk unpack, e.g. for devices with init_b
 # If lk2nd is installed, Write boot to 1MB offset
 if [ "$lk2nd" == "1" ]; then
   customdd="bs=1M seek=1"
+  toybox blkdiscard -o 1048576 $block
+else
+  toybox blkdiscard $block
 fi
 
 write_boot; # use flash_boot to skip ramdisk repack, e.g. for devices with init_boot ramdisk
