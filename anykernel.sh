@@ -39,6 +39,13 @@ if dd if=${block} of=/sdcard/backup-boot.img; then
   ui_print ""
 fi
 
+# If lk2nd is installed, Read boot from 1MB offset
+if [ "$(dd if=${block} skip=64 bs=1 count=5 2>/dev/null)" == "lk2nd" ]; then
+  ui_print "Detected lk2nd installation! Skipping the first 1MB."
+  customdd="bs=1M skip=1"
+  lk2nd=1
+fi
+
 # boot install
 dump_boot; # use split_boot to skip ramdisk unpack, e.g. for devices with init_boot ramdisk
 
@@ -57,6 +64,11 @@ dump_boot; # use split_boot to skip ramdisk unpack, e.g. for devices with init_b
 #patch_fstab fstab.tuna /cache ext4 options "barrier=1" "barrier=0,nomblk_io_submit";
 #patch_fstab fstab.tuna /data ext4 options "data=ordered" "nomblk_io_submit,data=writeback";
 #append_file fstab.tuna "usbdisk" fstab;
+
+# If lk2nd is installed, Write boot to 1MB offset
+if [ "$lk2nd" == "1" ]; then
+  customdd="bs=1M seek=1"
+fi
 
 write_boot; # use flash_boot to skip ramdisk repack, e.g. for devices with init_boot ramdisk
 ## end boot install
