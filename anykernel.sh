@@ -32,6 +32,13 @@ patch_vbmeta_flag=auto;
 # import functions/variables and setup patching - see for reference (DO NOT REMOVE)
 . tools/ak3-core.sh;
 
+# Backup the partition
+if dd if=${block} of=/sdcard/backup-boot.img; then
+  ui_print ""
+  ui_print "Your current boot image has been saved to: /sdcard/backup-boot.img"
+  ui_print ""
+fi
+
 # boot install
 dump_boot; # use split_boot to skip ramdisk unpack, e.g. for devices with init_boot ramdisk
 
