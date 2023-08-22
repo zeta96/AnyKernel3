@@ -17,6 +17,7 @@ device.name1=santoni
 device.name2=Redmi 4x
 supported.versions=
 supported.patchlevels=
+supported.vendorpatchlevels=
 '; } # end properties
 
 
