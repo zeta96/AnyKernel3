@@ -67,7 +67,7 @@ on property:persist.luuvy.profile=balance
 	  write /sys/kernel/gpu/gpu_max_clock 475
 
 	# Misc
-	  write /proc/sys/net/ipv4/tcp_congestion_control bbr
+	  ##write /proc/sys/net/ipv4/tcp_congestion_control westwood
 
 # Performance
 on property:persist.luuvy.profile=performance
@@ -101,7 +101,7 @@ on property:persist.luuvy.profile=performance
 	  write /sys/kernel/gpu/gpu_max_clock 475
 
 	# Misc
-	  write /proc/sys/net/ipv4/tcp_congestion_control bbr
+	  ##write /proc/sys/net/ipv4/tcp_congestion_control westwood
 
 # Battery
 on property:persist.luuvy.profile=battery
@@ -135,7 +135,7 @@ on property:persist.luuvy.profile=battery
 	  write /sys/kernel/gpu/gpu_max_clock 450
 
 	# Misc
-	  write /proc/sys/net/ipv4/tcp_congestion_control bbr
+	  ##write /proc/sys/net/ipv4/tcp_congestion_control westwood
 
 # Gaming
 on property:persist.luuvy.profile=gaming
@@ -169,7 +169,7 @@ on property:persist.luuvy.profile=gaming
 	  write /sys/kernel/gpu/gpu_max_clock 475
 
 	# Misc
-	  write /proc/sys/net/ipv4/tcp_congestion_control bbr
+	  ##write /proc/sys/net/ipv4/tcp_congestion_control westwood
 
 
 # Profile bridges: Spectrum
