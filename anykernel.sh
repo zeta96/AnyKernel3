@@ -34,16 +34,16 @@ PATCH_VBMETA_FLAG=auto;
 . tools/ak3-core.sh;
 
 # Backup the partition
-if dd if=${block} of=/sdcard/backup-boot.img; then
+if dd if=${BLOCK} of=/sdcard/backup-boot.img; then
   ui_print ""
   ui_print "Your current boot image has been saved to: /sdcard/backup-boot.img"
   ui_print ""
 fi
 
 # If lk2nd is installed, Read boot from 1MB offset
-if [ "$(dd if=${block} skip=64 bs=1 count=5 2>/dev/null)" == "lk2nd" ]; then
+if [ "$(dd if=${BLOCK} skip=64 bs=1 count=5 2>/dev/null)" == "lk2nd" ]; then
   ui_print "Detected lk2nd installation! Skipping the first 1MB."
-  customdd="bs=1M skip=1"
+  CUSTOMDD="bs=1M skip=1"
   lk2nd=1
 fi
 
@@ -68,10 +68,10 @@ dump_boot; # use split_boot to skip ramdisk unpack, e.g. for devices with init_b
 
 # If lk2nd is installed, Write boot to 1MB offset
 if [ "$lk2nd" == "1" ]; then
-  customdd="bs=1M seek=1"
-  toybox blkdiscard -o 1048576 $block
+  CUSTOMDD="bs=1M seek=1"
+  toybox blkdiscard -o 1048576 $BLOCK
 else
-  toybox blkdiscard $block
+  toybox blkdiscard $BLOCK
 fi
 
 write_boot; # use flash_boot to skip ramdisk repack, e.g. for devices with init_boot ramdisk
