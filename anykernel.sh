@@ -181,9 +181,9 @@ fi;
 
 
 #Spectrum copy
-cp -rpf $home/ramdisk/init.spectrum.rc $INIT_PATH2/init.spectrum.rc
+cp -rpf $AKHOME/ramdisk/init.spectrum.rc $INIT_PATH2/init.spectrum.rc
 chmod 644 $INIT_PATH2/init.spectrum.rc
-cp -rpf $home/ramdisk/init.spectrum.sh $INIT_PATH2/init.spectrum.sh
+cp -rpf $AKHOME/ramdisk/init.spectrum.sh $INIT_PATH2/init.spectrum.sh
 chmod 644 $INIT_PATH2/init.spectrum.sh
 
 # Locate selinux file and fix selinux denials for /init.*  with force init to load the monolithic sepolicy at /
@@ -191,7 +191,7 @@ chmod 644 $INIT_PATH2/init.spectrum.sh
 if [ -e "$SELINUX_FILE1" ]; then
 SELINUX=$SELINUX_FILE1
 ui_print "- found selinux file"
-$home/tools/magiskpolicy --load $SELINUX --save $SELINUX \
+$AKHOME/tools/magiskpolicy --load $SELINUX --save $SELINUX \
 "allow init rootfs file execute_no_trans" \
 "allow init sysfs_devices_system_cpu file write" \
 "allow init sysfs_msms_perf file write" \
@@ -238,7 +238,7 @@ $home/tools/magiskpolicy --load $SELINUX --save $SELINUX \
 elif [ -e "$SELINUX_FILE2" ]; then
 SELINUX=$SELINUX_FILE2
 ui_print "- found selinux file"
-$home/tools/magiskpolicy --load $SELINUX --save $SELINUX \
+$AKHOME/tools/magiskpolicy --load $SELINUX --save $SELINUX \
 "allow init rootfs file execute_no_trans" \
 "allow init sysfs_devices_system_cpu file write" \
 "allow init sysfs_msms_perf file write" \
